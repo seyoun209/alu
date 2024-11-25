@@ -1,0 +1,37 @@
+__default__:
+  name: "{rule},{wildcards}" # -J
+  partition: general # -p
+  time: 4320 # -t
+  cpusPerTask: "{threads}" # -c
+  memPerCpu: 4G # --mem-per-cpu
+  nodes: 1
+  ntasks: 1
+  output: "rna_output/logs_slurm/{rule}.{wildcards}.{jobid}.out"
+  error: "rna_output/logs_slurm/{rule}.{wildcards}.{jobid}.err"
+
+## Multi-threaded / High-memory Rules
+quant:
+  memPerCpu: 20G
+
+align:
+  memPerCpu: 12G
+
+multiqc:
+  memPerCpu: 4G
+
+mergeSignal:
+  memPerCpu: 8G
+  time: "11-00:00:00"
+
+mergeForwadSignal:
+  memPerCpu: 16G
+  time: "11-00:00:00"
+
+mergeReverseSignal:
+  memPerCpu: 16G
+  time: "11-00:00:00"
+
+mergeSignal_norm:
+  memPerCpu: 8G
+  time: "11-00:00:00"
+

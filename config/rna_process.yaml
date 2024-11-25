@@ -1,0 +1,45 @@
+## change the samplesheet name, filenamesfom, mergeby 
+  
+## Path to sample sheet
+samplesheet: 'rna_samplesheet.txt'
+update_samplesheet: 'bam_sampleshee.txt'
+
+## List columns to group (i.e. any columns left out will become part of the same group)
+## set mergeBy: '' for no merging
+mergeBy: ['Project','Cell_Type','Condition','Time','Bio_Rep','Tech_Rep','Seq_Rep']
+
+mergeCondition: ['Time']
+
+## Indicate whether to create stranded signal tracks
+#stranded: True # False
+
+## Genome-specific reference parameters
+#salmon: '/work/users/s/e/seyoun/Ref/genome/salmon_idx'
+gtf: '/users/s/e/seyoun/Ref/genome/gencode.v45.annotation.gtf'
+star: '/users/s/e/seyoun/Ref/genome/STAR_idx'
+starsjdb: '/users/s/e/seyoun/Ref/genome/STAR_idx/sjdbList.fromGTF.out.tab'
+fa: '/users/s/e/seyoun/Ref/genome/gencode.v45.transcripts.fa'
+genome_dir: '/users/s/e/seyoun/Ref/genome'
+
+##salmon options
+salmon: '/work/users/s/e/seyoun/Ref/genome/salmon_idx'
+gcBias: 'TRUE'
+seqBias: 'TRUE'
+
+##regtools
+regtools: '/work/users/s/e/seyoun/CQTL_sQTL/tools/regtools/build/regtools'
+
+##ramts
+
+##leafcutter
+leafcutter: '/work/users/s/e/seyoun/CQTL_sQTL/tools/leafcutter/'
+
+## Software versions
+fastqcVers: "0.12.1"
+starVers: "2.7.11b"
+samtoolsVers: "1.21"
+trim_galore: "0.6.7"
+pgizVers: "2.7"
+rVers: "4.4.0"
+pythonVers: '3.9.6'
+salmonVers: '1.10.2'
