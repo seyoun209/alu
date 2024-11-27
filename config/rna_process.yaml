@@ -2,13 +2,15 @@
   
 ## Path to sample sheet
 samplesheet: 'rna_samplesheet.txt'
-update_samplesheet: 'bam_sampleshee.txt'
+update_samplesheet: 'bam_samplesheet.txt'
 
 ## List columns to group (i.e. any columns left out will become part of the same group)
 ## set mergeBy: '' for no merging
 mergeBy: ['Project','Cell_Type','Condition','Time','Bio_Rep','Tech_Rep','Seq_Rep']
 
 mergeCondition: ['Time']
+selected_timepoints: ['0', '360', '4320']
+control_timepoint: '0'
 
 ## Indicate whether to create stranded signal tracks
 #stranded: True # False

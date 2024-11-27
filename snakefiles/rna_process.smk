@@ -40,13 +40,46 @@ onsuccess:
 	## Success message
 	print("RNA_Splicing completed successfully! Wahoo!")
 
+
 ##### Define rules #####
 rule all:
     input:
-        expand("rna_output/fastq/{sample}_R{read}.fastq.gz", sample=read1.keys(), read=[1,2]),
-        expand("rna_output/QC/{sample}_R{read}_fastqc.{ext}", sample=read1.keys(), read=[1,2], ext=['zip', 'html']),
-        expand("rna_output/align/{sample}_sorted.{ext}", sample=read1.keys(), ext=['bam', 'bai']),
-        expand("rna_output/quant/{sample}", sample=read1.keys())
+#        [expand("rna_output/fastq/{sampleName}_{read}.fastq.gz",
+#                sampleName=key, read=['R1','R2'])
+#         for key in read1],
+
+        # FastQC outputs
+        [expand("rna_output/QC/{sampleName}_{read}_fastqc.{ext}",
+                sampleName=key, read=['R1', 'R2'], ext=['zip', 'html'])
+         for key in read1],
+
+        # Trimming outputs
+#        [expand('rna_output/trim/{sampleName}_{read}{ext}',
+#                sampleName=key,
+#                read=['R1', 'R2'],
+#                ext=['_val_1.fq.gz', '_val_2.fq.gz', '.fastq.gz_trimming_report.txt'])
+#         for key in read1],
+
+        # Alignment outputs
+#        [expand("rna_output/align/{sampleName}_{ext}",
+#                sampleName=key,
+#                ext=["Aligned.sortedByCoord.out.bam",
+#                     "Log.out",
+#                     "Log.progress.out",
+#                     "Log.final.out"])
+#         for key in read1],
+
+        # BAM indexes
+#        [expand('rna_output/align/{sampleName}_sorted.{ext}',
+#                sampleName=key,
+#                ext=['bam', 'bai'])
+#         for key in read1],
+
+        # Quantification
+        [expand('rna_output/quant/{sampleName}',
+                sampleName=key)
+         for key in read1]
+
 
 rule catReads:
     input:
